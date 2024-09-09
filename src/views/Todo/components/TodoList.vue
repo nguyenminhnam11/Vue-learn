@@ -94,8 +94,8 @@ const saveName = () => {
                 border_color
               </span></label
             ><br />
-            <input id="todo-name" v-model="editedName" />
-            <button @click="saveName">Save Changes</button>
+            <input id="todo-name" v-model="editedName" :disabled="currentTodo.completed ? true : false" />
+            <button @click="saveName" :disabled="currentTodo.completed ? true : false">Save Changes</button>
           </div>
           <p>
             Status:
@@ -238,9 +238,13 @@ li {
         font-weight: 500;
         color: var(--dark-alt);
         transition: 0.2s;
-        
+
         &:hover {
           transform: scale(1.03)
+        }
+
+        &:disabled {
+          opacity: 0.5;
         }
       }
     }
