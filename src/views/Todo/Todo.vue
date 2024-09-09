@@ -45,7 +45,6 @@ const updateTodoList = (updatedTasks) => {
   box-shadow: 0 0px 70px rgba(6, 247, 138, 0.408);
   backdrop-filter: blur(7.8px);
   -webkit-backdrop-filter: blur(7.8px);
-  border: 1px solid rgba(39, 128, 88, 0.338);
   display: flex;
   flex-direction: column;
   gap: 20px;

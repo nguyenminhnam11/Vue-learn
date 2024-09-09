@@ -36,6 +36,7 @@ const handleChange = (event) => {
 <style scoped>
 .checkbox-wrapper-12 {
   position: relative;
+  
 }
 
 .checkbox-wrapper-12 > svg {

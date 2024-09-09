@@ -24,7 +24,7 @@ const handleAdd = () => {
 h1 {
   font-size: 1.5rem;
   text-transform: uppercase;
-  color: #1b1b1f;
+  color: var(--dark);
   text-align: center;
   margin-bottom: 1rem;
 }
