@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import WeatherForecastDay from "@/views/Weather/components/WeatherForecastDay.vue";
+import WeatherForecastDay from "@/views/Weather/components/WeatherForecastDay.vue"
 defineProps({
   place: Object,
   places: Array,

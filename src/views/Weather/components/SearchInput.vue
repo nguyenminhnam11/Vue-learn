@@ -23,7 +23,8 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import axios from "axios"
+import { reactive } from "vue"
 
 const emit = defineEmits(['place-data'])
 
@@ -31,27 +32,27 @@ const searchTerm = reactive({
   query: "",
   timeout: null,
   result: null,
-});
+})
 
 const handleSearch = () => {
-  clearTimeout(searchTerm.timeout);
+  clearTimeout(searchTerm.timeout)
   searchTerm.timeout = setTimeout(async () => {
     if (searchTerm.query !== "") {
-      const res = await fetch(
+      const res = await axios.get(
         `http://api.weatherapi.com/v1/search.json?key=4a81adcc30de4dbc820153525240509&q=${searchTerm.query}`
-      );
-      const data = await res.json();
-      searchTerm.result = data;
+      )
+      const data = res.data
+      searchTerm.result = data
     } else {
-      searchTerm.result = null;
+      searchTerm.result = null
     }
-  }, 400);
-};
+  }, 400)
+}
 
 const getWeather = async (id) => {
-    const res = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=4a81adcc30de4dbc820153525240509&q=id:${id}&days=5&aqi=no&alerts=no`)
+    const res = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=4a81adcc30de4dbc820153525240509&q=id:${id}&days=5&aqi=no&alerts=no`)
 
-    const data = await res.json()
+    const data = res.data
     emit('place-data', data)
 
     searchTerm.query = ''

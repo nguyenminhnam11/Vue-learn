@@ -1,24 +1,24 @@
 <script setup>
-import SearchInput from "@/views/Weather/components/SearchInput.vue";
-import WeatherCard from "@/views/Weather/components/WeatherCard.vue";
-import { ref } from "vue";
-const savedPlaces = localStorage.getItem('listWeather');
-const places = ref(savedPlaces ? JSON.parse(savedPlaces) : []);
+import SearchInput from "@/views/Weather/components/SearchInput.vue"
+import WeatherCard from "@/views/Weather/components/WeatherCard.vue"
+import { ref } from "vue"
+const savedPlaces = localStorage.getItem('listWeather')
+const places = ref(savedPlaces ? JSON.parse(savedPlaces) : [])
 
 
 const addPlace = (data) => {
-  const exists = places.value.some((place) => place.location.name === data.location.name);
+  const exists = places.value.some((place) => place.location.name === data.location.name)
   if (!exists) {
-    places.value.push(data);
+    places.value.push(data)
     localStorage.setItem('listWeather', JSON.stringify(places.value))
   } else {
-    alert(`${data.location.name} has existed`);
+    alert(`${data.location.name} has existed`)
   }
-};
+}
 
 const deletePlace = (name) => {
   places.value = places.value.filter(p => p.location.name !== name)
-  localStorage.setItem('listWeather', JSON.stringify(places.value));
+  localStorage.setItem('listWeather', JSON.stringify(places.value))
 }
 </script>
 
